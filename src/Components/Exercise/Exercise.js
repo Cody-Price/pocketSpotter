@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Exercise from '../Exercise/Exercise'
-import { connect } from 'react-redux'
 import { addExercise } from '../../actions/index'
+import { connect } from 'react-redux'
 
-class Workout extends Component {
+class Exercise extends Component {
   constructor() {
     super()
     this.state = {
@@ -14,14 +13,7 @@ class Workout extends Component {
   render() {
     return (
       <div>
-        <input
-          type="text"
-        />
-        <label>Workout Name</label>
-        {this.props.exercise.map(exercise => {
-          return <Exercise exercise={exercise} />
-        })}
-        <Exercise />
+        <button onClick={() => this.props.addExercise('hello')}>Add Exercise</button>
       </div>
     )
   }
@@ -35,4 +27,4 @@ export const mapDispatchToProps = (dispatch) => ({
   addExercise: (exercise) => dispatch(addExercise(exercise)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Workout)
+export default connect(mapStateToProps, mapDispatchToProps)(Exercise)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './App.scss'
-import Splash from '../Splash/Splash'
+import { Route, NavLink, Switch } from 'react-router-dom'
+import Workout from '../Workout/Workout'
+import Calendar from '../Calendar/Calendar'
 
 class App extends Component {
   constructor() {
@@ -15,7 +17,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Splash />
+        <NavLink to='/Workout' className="splash-btn">Workout Now</NavLink>
+        <NavLink to='/Calendar' className="splash-btn">Calendar</NavLink>
+        <Switch>
+          <Route exact path='/Workout' component={Workout}/>
+          <Route exact path='/Calendar' component={Calendar}/>
+        </Switch>
       </div>
     )
   }
