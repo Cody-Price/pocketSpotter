@@ -14,6 +14,15 @@ class Exercise extends Component {
     return (
       <div>
         <button onClick={() => this.props.addExercise('hello')}>Add Exercise</button>
+        <select>
+          <option>Select Muscle Group</option>
+          <option>Legs</option>
+          <option>Chest</option>
+          <option>Back</option>
+          <option>Shoulders</option>
+          <option>Abs</option>
+          <option>Cardio</option>
+        </select>
       </div>
     )
   }
