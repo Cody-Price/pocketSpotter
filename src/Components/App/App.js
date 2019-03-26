@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.scss'
+import '../../index.css'
 import { Route, NavLink, Switch } from 'react-router-dom'
 import Workout from '../Workout/Workout'
 import Calendar from '../Calendar/Calendar'
