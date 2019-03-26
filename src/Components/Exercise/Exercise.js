@@ -16,17 +16,13 @@ class Exercise extends Component {
   constructor() {
     super()
     this.state = {
-      muscleGroup: '',
-      hello: ''
+      muscleGroup: ''
     }
   }
 
   handleMuscleGroup = (e) => {
-    console.log(e.target.value)
     let muscleGroup = e.target.value
-    this.setState({muscleGroup: muscleGroup,
-      hello: 'world'
-    }, console.log(this.state.muscleGroup))
+    this.setState({muscleGroup: muscleGroup})
   }
 
   render() {
@@ -43,9 +39,11 @@ class Exercise extends Component {
           <option>Cardio</option>
         </select>
         <select>
-          {workoutExercises[this.state.muscleGroup].map(exercise => {
-            return `<option>${exercise}</option>`
-          })}
+          {
+            workoutExercises[this.state.muscleGroup].map(exercise => {
+              return <option key={exercise}>{exercise}</option>
+            })
+          }
         </select>
       </div>
     )
