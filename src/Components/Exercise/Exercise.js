@@ -2,19 +2,38 @@ import React, { Component } from 'react'
 import { addExercise } from '../../actions/index'
 import { connect } from 'react-redux'
 
+const workoutExercises = {
+  '': ['Select Exercise'],
+  'Legs': ['Squats', 'Quad Extensions', 'Hamstring Curls', 'Calf Raises'],
+  'Chest': ['Bench Press', 'Dumbell Bench Press', 'Hammerstring Pulldowns', 'Flys'],
+  'Back': ['Rows', 'Pull Ups', 'Back Extensions'],
+  'Shoulders': ['Deltoid Flys', 'Front Deltoid Raises', 'Rear Deltoid Raises', 'Shrugs'],
+  'Abs': ['Crunches', 'Oblique Crunches', 'Leg Raises', 'Bicycles'],
+  'Cardio': ['Treadmill Running', 'Outdoor Running', 'Elyptical', 'Stationary Bike', 'Rowing']
+}
+
 class Exercise extends Component {
   constructor() {
     super()
     this.state = {
-
+      muscleGroup: '',
+      hello: ''
     }
+  }
+
+  handleMuscleGroup = (e) => {
+    console.log(e.target.value)
+    let muscleGroup = e.target.value
+    this.setState({muscleGroup: muscleGroup,
+      hello: 'world'
+    }, console.log(this.state.muscleGroup))
   }
 
   render() {
     return (
       <div>
         <button onClick={() => this.props.addExercise('hello')}>Add Exercise</button>
-        <select>
+        <select onChange={(e) => this.handleMuscleGroup(e)}>
           <option>Select Muscle Group</option>
           <option>Legs</option>
           <option>Chest</option>
@@ -22,6 +41,11 @@ class Exercise extends Component {
           <option>Shoulders</option>
           <option>Abs</option>
           <option>Cardio</option>
+        </select>
+        <select>
+          {workoutExercises[this.state.muscleGroup].map(exercise => {
+            return `<option>${exercise}</option>`
+          })}
         </select>
       </div>
     )
