@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Exercise from '../Exercise/Exercise'
 import { connect } from 'react-redux'
 import { addExercise } from '../../actions/index'
+import '../../index.css'
 
 class Workout extends Component {
   constructor() {
