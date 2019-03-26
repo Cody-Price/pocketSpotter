@@ -9,7 +9,7 @@ export default class Calendar extends Component {
   }
 
   calendarChange = (e) => {
-    const date = e.target
+    const date = e.target.value
     this.setState({value: date})
   }
 
@@ -18,8 +18,7 @@ export default class Calendar extends Component {
       <div>
         <input
           type="date"
-          value={this.state}
-          onChange={this.calendarChange}
+          onChange={(e) => this.calendarChange(e)}
         />
       </div>
     )
