@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { addExercise } from '../../actions/index'
 import { connect } from 'react-redux'
+import '../../index.css'
 
 const workoutExercises = {
   '': ['Select Exercise'],
@@ -16,7 +17,9 @@ class Exercise extends Component {
   constructor() {
     super()
     this.state = {
-      muscleGroup: ''
+      muscleGroup: '',
+      leftOption: 0,
+      rightOption: 0
     }
   }
 
@@ -25,10 +28,33 @@ class Exercise extends Component {
     this.setState({muscleGroup: muscleGroup})
   }
 
+  handleLeftOptionUp = () => {
+    this.setState({
+      leftOption: this.state.leftOption + 5
+    })
+  }
+
+  handleLeftOptionDown = () => {
+    this.setState({
+      leftOption: this.state.leftOption - 5
+    })
+  }
+
+  handleRightOptionUp = () => {
+    this.setState({
+      rightOption: this.state.rightOption + 5
+    })
+  }
+
+  handleRightOptionDown = () => {
+    this.setState({
+      rightOption: this.state.rightOption - 5
+    })
+  }
+
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.addExercise('hello')}>Add Exercise</button>
+      <div className="exercise-div">
         <select onChange={(e) => this.handleMuscleGroup(e)}>
           <option>Select Muscle Group</option>
           <option>Legs</option>
@@ -45,6 +71,31 @@ class Exercise extends Component {
             })
           }
         </select>
+        <select>
+          <option>Weight/Reps</option>
+          <option>Weight/Distance</option>
+          <option>Weight/Time</option>
+          <option>Reps/Distance</option>
+          <option>Reps/Time</option>
+          <option>Distance/Time</option>
+          <option>Weight</option>
+          <option>Reps</option>
+          <option>Distance</option>
+          <option>Time</option>
+        </select>
+        <div className="options-div">
+          <div className="left-option-div option-div">
+            <button onClick={this.handleLeftOptionUp}>+</button>
+            <p className="left-option" contentEditable="true">{this.state.leftOption}</p>
+            <button onClick={this.handleLeftOptionDown}>-</button>
+          </div>
+          <div className="right-option-div option-div">
+            <button onClick={this.handleRightOptionUp}>+</button>
+            <p className="right-option" contentEditable="true">{this.state.rightOption}</p>
+            <button onClick={this.handleRightOptionDown}>-</button>
+          </div>
+        </div>
+        <button className="add-ex-btn" onClick={() => this.props.addExercise('hello')}>Add Another Exercise</button>
       </div>
     )
   }
