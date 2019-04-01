@@ -26,7 +26,8 @@ class Exercise extends Component {
       rightOption: 0,
       sets: [],
       htmlLeftOption: '<p className="left-option">0</p>',
-      htmlRightOption: '<p className="right-option">0</p>'
+      htmlRightOption: '<p className="right-option">0</p>',
+      optionsLable: ''
     }
   }
 
@@ -100,6 +101,12 @@ class Exercise extends Component {
     })
   }
 
+  handleOptionsSelect = (e) => {
+    this.setState({
+      optionsLable: e.target.value
+    })
+  }
+
   render() {
     return (
       <div className="exercise-div">
@@ -119,7 +126,8 @@ class Exercise extends Component {
             })
           }
         </select>
-        <select>
+        <select onChange={this.handleOptionsSelect}>
+          <option>Select Option</option>
           <option>Weight/Reps</option>
           <option>Weight/Distance</option>
           <option>Weight/Time</option>
@@ -134,6 +142,7 @@ class Exercise extends Component {
         <div>
           <p>{this.state.muscleGroup}</p>
           <p>{this.state.exerciseName}</p>
+          <p className="options-lable">{this.state.optionsLable}</p>
           {
             this.state.sets.map(set => {
               return <Set set={set} />
