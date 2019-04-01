@@ -3,4 +3,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding-top: 50px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.nav-wrap {
+  width: 105%;
+  background-color: rgba(4, 0, 255, 0.849);
+  position: fixed;
+  top: 0px;
+  border-bottom: 2px solid black;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 93%;
+  font-size: 1.3rem;
+  margin: 10px;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
 }
