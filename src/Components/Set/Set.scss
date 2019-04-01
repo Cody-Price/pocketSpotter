@@ -1,0 +1,11 @@
+.set {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid red;
+}
+
+.subset {
+  margin: 2px;
+}
