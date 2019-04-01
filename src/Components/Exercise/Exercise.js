@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { addExercise } from '../../actions/index'
+import ContentEditable from 'react-contenteditable'
 import { connect } from 'react-redux'
 import '../../index.css'
 import Set from '../Set/Set'
@@ -17,12 +18,15 @@ const workoutExercises = {
 class Exercise extends Component {
   constructor() {
     super()
+    this.contentEditable = React.createRef()
     this.state = {
       muscleGroup: '',
       exerciseName: '',
       leftOption: 0,
       rightOption: 0,
-      sets: []
+      sets: [],
+      htmlLeftOption: '<p className="left-option">0</p>',
+      htmlRightOption: '<p className="right-option">0</p>'
     }
   }
 
@@ -37,26 +41,50 @@ class Exercise extends Component {
   }
 
   handleLeftOptionUp = () => {
+    let leftOption = this.state.leftOption + 5
     this.setState({
-      leftOption: this.state.leftOption + 5
+      leftOption,
+      htmlLeftOption: `<p className="left-option">${leftOption}</p>`
     })
   }
 
   handleLeftOptionDown = () => {
+    let leftOption = this.state.leftOption - 5
     this.setState({
-      leftOption: this.state.leftOption - 5
+      leftOption,
+      htmlLeftOption: `<p className="left-option">${leftOption}</p>`
     })
   }
 
   handleRightOptionUp = () => {
+    let rightOption = this.state.rightOption + 1
     this.setState({
-      rightOption: this.state.rightOption + 5
+      rightOption,
+      htmlRightOption: `<p className="right-option">${rightOption}</p>`
     })
   }
 
   handleRightOptionDown = () => {
+    let rightOption = this.state.rightOption - 1
     this.setState({
-      rightOption: this.state.rightOption - 5
+      rightOption,
+      htmlRightOption: `<p className="right-option">${rightOption}</p>`
+    })
+  }
+
+  handleLeftEdit = (e) => {
+    console.log('left:', e.target.value)
+    this.setState({
+      leftOption: e.target.value.innerText,
+      htmlLeftOption: `<p>${this.state.leftOption}</p>`
+    })
+  }
+
+  handleRightEdit = (e) => {
+    console.log('right:', e.target.value)
+    this.setState({
+      rightOption: e.target.value.innerText,
+      htmlRightOption: `<p>${this.state.rightOption}</p>`
     })
   }
 
@@ -103,20 +131,36 @@ class Exercise extends Component {
           <option>Distance</option>
           <option>Time</option>
         </select>
-        {
+        <div>
+          <p>{this.state.muscleGroup}</p>
+          <p>{this.state.exerciseName}</p>
+          {
             this.state.sets.map(set => {
               return <Set set={set} />
             })
           }
+        </div>
         <div className="options-div">
           <div className="left-option-div option-div">
             <button onClick={this.handleLeftOptionUp}>+</button>
-            <p className="left-option" contentEditable="true">{this.state.leftOption}</p>
+            <ContentEditable 
+              className="left-option" 
+              innerRef={this.contentEditable}
+              html={this.state.htmlLeftOption}
+              disabled={false}
+              onChange={this.handleLeftEdit}
+            />
             <button onClick={this.handleLeftOptionDown}>-</button>
           </div>
           <div className="right-option-div option-div">
             <button onClick={this.handleRightOptionUp}>+</button>
-            <p className="right-option" contentEditable="true">{this.state.rightOption}</p>
+            <ContentEditable 
+              className="right-option" 
+              innerRef={this.contentEditable}
+              html={this.state.htmlRightOption}
+              disabled={false}
+              onChange={this.handleRightEdit}
+            />
             <button onClick={this.handleRightOptionDown}>-</button>
           </div>
           <button onClick={this.addSet}>Add Set</button>
