@@ -122,7 +122,7 @@ class Exercise extends Component {
         <select onChange={(e) => this.handleExercise(e)}>
           {
             workoutExercises[this.state.muscleGroup].map(exercise => {
-              return <option key={exercise}>{exercise}</option>
+              return <option className=""key={exercise}>{exercise}</option>
             })
           }
         </select>

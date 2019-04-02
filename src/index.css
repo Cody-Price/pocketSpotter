@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+body {
+  font-family: 'Varela Round', Arial, Helvetica, sans-serif;
+}
+
+select {
+  font-family: 'Varela Round', Arial, Helvetica, sans-serif;
+}
+
+button {
+  font-family: 'Varela Round', Arial, Helvetica, sans-serif;
+}
+
+option {
+  font-family: 'Varela Round', Arial, Helvetica, sans-serif;
+}
+
 @import './Components/Exercise/Exercise.scss';
 @import './Components/App/App.scss';
 @import './Components//Workout/Workout.scss';
