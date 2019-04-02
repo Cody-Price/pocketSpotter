@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   width: 84vw;
+  box-shadow: 2px 2px 2px rgb(48, 48, 48);
 }
 
 .options-div {
@@ -26,13 +27,32 @@
 select {
   background-color: lightblue;
   margin: 1vh 0;
+  border: 2px solid rgb(48, 48, 48);
+  border-radius: 10px;
+  width: 63%;
+  text-align: center;
+}
+
+select:focus {
+  outline: none;
 }
 
 button {
   background-color: lightgreen;
   margin: 1vh 0;
+  border-radius: 10px;
+  border: 2px solid rgb(48, 48, 48);
+}
+
+.add-sub-btn {
+  padding: 5px 10px;
+}
+
+.option-edit {
+  text-align: center;
 }
 
 .add-ex-btn {
   margin: 0 auto;
+  width: 63%;
 }

@@ -151,26 +151,26 @@ class Exercise extends Component {
         </div>
         <div className="options-div">
           <div className="left-option-div option-div">
-            <button onClick={this.handleLeftOptionUp}>+</button>
+            <button onClick={this.handleLeftOptionUp} className="add-sub-btn">+</button>
             <ContentEditable 
-              className="left-option" 
+              className="left-option option-edit" 
               innerRef={this.contentEditable}
               html={this.state.htmlLeftOption}
               disabled={false}
               onChange={this.handleLeftEdit}
             />
-            <button onClick={this.handleLeftOptionDown}>-</button>
+            <button onClick={this.handleLeftOptionDown} className="add-sub-btn">-</button>
           </div>
           <div className="right-option-div option-div">
-            <button onClick={this.handleRightOptionUp}>+</button>
+            <button onClick={this.handleRightOptionUp} className="add-sub-btn">+</button>
             <ContentEditable 
-              className="right-option" 
+              className="right-option option-edit" 
               innerRef={this.contentEditable}
               html={this.state.htmlRightOption}
               disabled={false}
               onChange={this.handleRightEdit}
             />
-            <button onClick={this.handleRightOptionDown}>-</button>
+            <button onClick={this.handleRightOptionDown} className="add-sub-btn">-</button>
           </div>
           <button onClick={this.addSet}>Add Set</button>
         </div>
