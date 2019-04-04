@@ -15,10 +15,12 @@ class Workout extends Component {
   render() {
     return (
       <div>
-        <input
-          type="text"
-        />
-        <label>Workout Name</label>
+        <div className="workout-label-div">
+          <label>Workout Name:</label>
+          <input
+            type="text"
+          />
+        </div>
         {this.props.exercise.map(exercise => {
           return <Exercise exercise={exercise} />
         })}

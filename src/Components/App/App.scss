@@ -6,14 +6,16 @@
   margin: 0;
   width: 100%;
   min-height: 100vh;
+  padding-top: 55px;
 }
 
 .nav-wrap {
   width: 105%;
-  background-color: rgb(44, 41, 255);
+  background-color: rgba(45, 41, 255, 0.925);
   position: fixed;
   top: 0px;
   border-bottom: 2px solid black;
+  box-shadow: 5px 5px 15px black;
 }
 
 .nav {
@@ -28,4 +30,5 @@
 .nav-btn {
   color: white;
   text-decoration: none;
+  text-shadow: 1px 1px 1px rgb(78, 78, 78);
 }
