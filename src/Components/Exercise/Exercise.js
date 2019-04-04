@@ -25,8 +25,8 @@ class Exercise extends Component {
       leftOption: 0,
       rightOption: 0,
       sets: [],
-      htmlLeftOption: '<p className="left-option">0</p>',
-      htmlRightOption: '<p className="right-option">0</p>',
+      htmlLeftOption: '<p className="left-option option-edit">0</p>',
+      htmlRightOption: '<p className="right-option option-edit">0</p>',
       optionsLable: ''
     }
   }
@@ -45,7 +45,7 @@ class Exercise extends Component {
     let leftOption = this.state.leftOption + 5
     this.setState({
       leftOption,
-      htmlLeftOption: `<p className="left-option">${leftOption}</p>`
+      htmlLeftOption: `<p className="left-option option-edit">${leftOption}</p>`
     })
   }
 
@@ -53,7 +53,7 @@ class Exercise extends Component {
     let leftOption = this.state.leftOption - 5
     this.setState({
       leftOption,
-      htmlLeftOption: `<p className="left-option">${leftOption}</p>`
+      htmlLeftOption: `<p className="left-option option-edit">${leftOption}</p>`
     })
   }
 
@@ -61,7 +61,7 @@ class Exercise extends Component {
     let rightOption = this.state.rightOption + 1
     this.setState({
       rightOption,
-      htmlRightOption: `<p className="right-option">${rightOption}</p>`
+      htmlRightOption: `<p className="right-option option-edit">${rightOption}</p>`
     })
   }
 
@@ -69,23 +69,29 @@ class Exercise extends Component {
     let rightOption = this.state.rightOption - 1
     this.setState({
       rightOption,
-      htmlRightOption: `<p className="right-option">${rightOption}</p>`
+      htmlRightOption: `<p className="right-option option-edit">${rightOption}</p>`
     })
   }
 
   handleLeftEdit = (e) => {
-    console.log('left:', e.target.value)
-    this.setState({
-      leftOption: e.target.value.innerText,
-      htmlLeftOption: `<p>${this.state.leftOption}</p>`
-    })
+    console.log(e.target.value.innerText)
+    if (e.target.value.innerText === undefined) {
+      this.setState({
+        leftOption: '',
+        htmlLeftOption: `<p className="left-option option-edit">${this.state.leftOption}</p>`
+      })
+    } else {
+      this.setState({
+        leftOption: e.target.value.innerText,
+        htmlLeftOption: `<p className="left-option option-edit">${this.state.leftOption}</p>`
+      })
+    }
   }
 
   handleRightEdit = (e) => {
-    console.log('right:', e.target.value)
     this.setState({
       rightOption: e.target.value.innerText,
-      htmlRightOption: `<p>${this.state.rightOption}</p>`
+      htmlRightOption: `<p className="right-option option-edit">${this.state.rightOption}</p>`
     })
   }
 
