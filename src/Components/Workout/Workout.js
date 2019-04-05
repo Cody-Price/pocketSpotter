@@ -8,7 +8,7 @@ class Workout extends Component {
   constructor() {
     super()
     this.state = {
-
+      name: ''
     }
   }
 
