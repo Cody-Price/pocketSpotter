@@ -8,8 +8,15 @@ class Workout extends Component {
   constructor() {
     super()
     this.state = {
-      name: ''
+      workout_name: ''
     }
+  }
+
+  handleWorkoutNameChange = (e) => {
+    const {name, value} = e.target
+    this.setState({
+      [name]: value
+    })
   }
 
   render() {
@@ -19,6 +26,9 @@ class Workout extends Component {
           <label>Workout Name:</label>
           <input
             type="text"
+            name="workout_name"
+            value={this.state.workout_name}
+            onChange={this.handleWorkoutNameChange}
           />
         </div>
         {this.props.exercise.map(exercise => {
