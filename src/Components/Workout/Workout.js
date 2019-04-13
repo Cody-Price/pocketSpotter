@@ -8,7 +8,8 @@ class Workout extends Component {
   constructor() {
     super()
     this.state = {
-      workout_name: ''
+      workoutName: '',
+      workoutData: {}
     }
   }
 
@@ -16,6 +17,12 @@ class Workout extends Component {
     const {name, value} = e.target
     this.setState({
       [name]: value
+    })
+  }
+
+  saveWorkout = (data) => {
+    this.setState({
+      workoutData: data
     })
   }
 
@@ -27,14 +34,17 @@ class Workout extends Component {
           <input
             type="text"
             name="workout_name"
-            value={this.state.workout_name}
+            value={this.state.workoutName}
             onChange={this.handleWorkoutNameChange}
           />
         </div>
         {this.props.exercise.map(exercise => {
-          return <Exercise exercise={exercise} />
+          return <Exercise 
+            exercise={exercise}
+          />
         })}
         <Exercise />
+        <button className="save-workout-btn" onClick={this.saveWorkout}>Save Workout</button>
       </div>
     )
   }
